@@ -1,3 +1,6 @@
 #인텔리제이에서 자동으로 생성되는 파일, 깃허브에 올릴 필요 X
 .idea
 .gradle
+
+#보안이 중요한 정보이기 때문에 oauth.properties 파일을 ignore한다.
+application-oauth.properties

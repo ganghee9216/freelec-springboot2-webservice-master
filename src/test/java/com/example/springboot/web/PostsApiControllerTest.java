@@ -23,10 +23,10 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 //JPA기능까지 한번에 테스트 할 때는 @WebMvcTest를 쓰지 않고 @SpringBootTest와 TestRestTemplate을 사용한다.
 //호스트가 사용하지 않는 랜덤 포트를 사용하겠다는 의미
-//
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+
 public class PostsApiControllerTest {
 
     @LocalServerPort
@@ -52,7 +52,7 @@ public class PostsApiControllerTest {
 
         String url = "http://localhost:" + port + "/api/v1/posts";
 
-        //정의
+        //객체 생성
         ResponseEntity<Long> responseEntity = restTemplate.postForEntity(url, requestDto, Long.class);
 
         //검증
@@ -78,7 +78,7 @@ public class PostsApiControllerTest {
 
         HttpEntity<PostsUpdateRequestDto> requestEntity = new HttpEntity<>(requestDto);
 
-        //정의
+        //객체 생성
         ResponseEntity<Long> responseEntity = restTemplate.exchange(url, HttpMethod.PUT, requestEntity, Long.class);
 
         //검증
@@ -95,7 +95,7 @@ public class PostsApiControllerTest {
         LocalDateTime now = LocalDateTime.of(2022,5,12,0,0,0);
         postsRepository.save(Posts.builder().title("title").content("content").author("author").build());
 
-        //정의
+        //객체 생성
         List<Posts> postsList = postsRepository.findAll();
 
         //검증

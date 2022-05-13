@@ -3,19 +3,19 @@ package com.example.springboot.web.dto;
 import com.example.springboot.domain.posts.Posts;
 import lombok.Getter;
 
-@Getter
-//Entity의 필드 중 일부만 사용하므로 생성자로 Entity를 받아 필드에 값을 넣음
-public class PostsResponseDto {
+import java.time.LocalDateTime;
 
+@Getter
+public class PostsListResponseDto {
     private Long id;
     private String title;
-    private String content;
     private String author;
+    private LocalDateTime modifiedDate;
 
-    public PostsResponseDto(Posts entity){
+    public PostsListResponseDto(Posts entity){
         this.id = entity.getId();
         this.title = entity.getTitle();
-        this.content = entity.getContent();
         this.author = entity.getAuthor();
+        this.modifiedDate = entity.getModifiedDate();
     }
 }

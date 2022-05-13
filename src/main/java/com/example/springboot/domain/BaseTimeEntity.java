@@ -10,10 +10,10 @@ import javax.persistence.MappedSuperclass;
 import java.time.LocalDateTime;
 
 @Getter
-@MappedSuperclass
 //jpa entity 클래스들이 BaseTimeEntity 를 상속할 경우 필드들도 칼럼으로 인식시킨다.
-@EntityListeners(AuditingEntityListener.class)
+@MappedSuperclass
 //BaseTimeEntity 클래스에 Auditing 기능(자동으로 시간을 매핑하여 테이블에 넣어주는 기능)을 포함시킨다.
+@EntityListeners(AuditingEntityListener.class)
 public abstract class BaseTimeEntity {
 
     @CreatedDate
