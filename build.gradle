@@ -4,7 +4,6 @@ buildscript {
     }
     repositories {
         mavenCentral()
-        jcenter()
     }
     dependencies {
         classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
@@ -23,18 +22,25 @@ sourceCompatibility = 1.8
 
 repositories {      //각종 의존성(라이브러리)들을 어떤 원격 저장소에서 받을지 결정
     mavenCentral()
-    jcenter()
 }
 
 dependencies {      //의존성 선언
+    //특정 버전을 명시하지 않음으로써 위 buildscript 의 버전을 따라가게됨.
     compile('org.springframework.boot:spring-boot-starter-web')
-    //특정 버전을 명시하지 않음으로써 위 buildscript의 버전을 따라가게됨.
-    compile('org.projectlombok:lombok')
     //프로젝트에 롬복 추가
-    compile('org.springframework.boot:spring-boot-starter-data-jpa')
+    compile('org.projectlombok:lombok')
     //스프링부트용 Spring Data Jpa 추상화 라이브러리, 스프링부트 버전에 맞춰 자동으로 버전관리를 해준다.
-    compile('com.h2database:h2')
+    compile('org.springframework.boot:spring-boot-starter-data-jpa')
     /*인메모리 관계형 데이터베이스, 별도의 설치 없이 프로젝트 의존성만으로 관리 가능, 메모리에서 실행되기 때문에
     어플리케이션을 재시작할 때마다 초기화되어서 테스트 용도로 많이 사용된다.*/
+    compile('com.h2database:h2')
+    //머스테치 스타터 의존성 등록
+    compile('org.springframework.boot:spring-boot-starter-mustache')
+    //소셜 로그인 등 클라이언트 입장에서 소셜 기능 구현 시 필요한 의존성이다.
+    compile('org.springframework.boot:spring-boot-starter-oauth2-client')
+    //데이터베이스 의존성 추가
+    compile('org.springframework.session:spring-session-jdbc')
+    //스프링 시큐리티 테스트를 위한 여러 도구를 지원한다.
+    testCompile('org.springframework.security:spring-security-test')
     testCompile('org.springframework.boot:spring-boot-starter-test')
 }
