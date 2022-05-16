@@ -22,8 +22,7 @@ public class IndexControllerTest {
         //객체 생성
         // get방식으로 "/"로 호출했을 때 String형태로 반환
         String body = this.restTemplate.getForObject("/", String.class);
-
         //검증
-        assertThat(body).contains("스프링 부트로 시작하는 웹 서비스");
+        assertThat(body).contains("스프링 부트 웹 서비스");
     }
 }
